@@ -1,7 +1,7 @@
 const {sequelize} = require('../database/Database')
 const {DataTypes} = require('sequelize');
 
-const ClothsModel = sequelize.define('Weather',{
+const ClothsModel = sequelize.define('cloths',{
     
     name:{
         type:DataTypes.STRING,
