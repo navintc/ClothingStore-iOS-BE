@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const ClothsModel = require('../models/ClothsModel');
 
-
+const { Op } = require('sequelize');
 
 router.get('/cloths', async(request,response)=>{
     const clothsData = await ClothsModel.findAll();
@@ -11,14 +11,14 @@ router.get('/cloths', async(request,response)=>{
 });
 
 router.post('/cloths', async (request,response)=>{
-    const {name, category, price, desc,
+    const {name, category, price, descrip,
         imageurl, color, colorHex} = request.body;
 
     const newClothsData = ClothsModel.build({
         'name':name,
         'category':category,
         'price':price,
-        'desc':desc,
+        'descrip':descrip,
         'imageurl':imageurl,
         'color':color,
         'colorHex':colorHex 
@@ -31,6 +31,26 @@ router.post('/cloths', async (request,response)=>{
     }
     catch(error){
         response.json(error)
+    }
+
+});
+
+router.get('/cloths/search', async (request, response) => {
+    const { query } = request.query;
+
+    try {
+        const searchResults = await ClothsModel.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${query}%`
+                },
+            }
+        });
+
+        response.status(200).json(searchResults);
+    } catch (error) {
+        console.error('Search error:', error);
+        response.status(500).json({ message: 'Internal server error' });
     }
 });
 
@@ -72,7 +92,7 @@ router.put('/clothsid/:id', async(request,response)=>{
         }
     });
 
-    const {name, category, price, desc,
+    const {name, category, price, descrip,
         imageurl, color, colorHex} = request.body;
 
     await clothsData.set(
@@ -80,7 +100,7 @@ router.put('/clothsid/:id', async(request,response)=>{
             name:name,
             category:category,
             price:price,
-            desc:desc,
+            descrip:descrip,
             imageurl:imageurl,
             color:color,
             colorHex:colorHex 
