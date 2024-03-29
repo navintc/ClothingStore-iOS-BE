@@ -1,5 +1,5 @@
 const express = require('express');
-const apiRoutes = require('./routes/ClothsRoutes');
+const apiRoutes = require('./routes/Routes');
 const {sequelize,connectToDb} = require('./database/database');
 const body_parser = require('body-parser');
 

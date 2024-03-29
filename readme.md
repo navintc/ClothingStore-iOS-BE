@@ -1,4 +1,15 @@
+### Creating SQL Tables
+
 CREATE TABLE Cloths ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), category VARCHAR(10), price FLOAT, descrip VARCHAR(300), imageurl VARCHAR(300), color VARCHAR(20), colorHex VARCHAR(8), createdAt TIMESTAMP, updatedAt TIMESTAMP );
+
+
+CREATE TABLE Bills ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(200), payment FLOAT, addressname VARCHAR(200), address1 VARCHAR(200), address2 VARCHAR(200), city VARCHAR(200), country VARCHAR(200), createdAt TIMESTAMP, updatedAt TIMESTAMP );
+
+------------------------------------
+
+
+### Sample data for cloth products
+(http://localhost:3000/api/cloths - POST)
 
 
 {
@@ -21,3 +32,18 @@ CREATE TABLE Cloths ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), categ
     "colorHex": "#C7372F"
 }
 
+---------------------
+
+### Sample data for cloth products
+(http://localhost:3000/api/bills - POST)
+
+
+{
+    "name": "John Gurusinghe",
+    "payment": 1000.53,
+    "addressname": "John Gurusinghe",
+    "address1": "Flower Rd.",
+    "address2": "Mohodaradeniya",
+    "city": "Colombo",
+    "country": "Sri Lanka"
+}
