@@ -1,5 +1,7 @@
 const express = require('express');
-const apiRoutes = require('./routes/Routes');
+const userRoutes = require('./routes/UserRoutes');
+const billRoutes = require('./routes/BillRoutes');
+const clothsRoutes = require('./routes/ClothsRoutes');
 const {sequelize,connectToDb} = require('./database/database');
 const body_parser = require('body-parser');
 
@@ -7,7 +9,9 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/api',apiRoutes);
+app.use('/api', userRoutes);
+app.use('/api', billRoutes);
+app.use('/api', clothsRoutes);
 
 
 

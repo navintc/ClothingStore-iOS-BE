@@ -3,7 +3,9 @@
 CREATE TABLE Cloths ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), category VARCHAR(10), price FLOAT, descrip VARCHAR(300), imageurl VARCHAR(300), color VARCHAR(20), colorHex VARCHAR(8), createdAt TIMESTAMP, updatedAt TIMESTAMP );
 
 
-CREATE TABLE Bills ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(200), payment FLOAT, addressname VARCHAR(200), address1 VARCHAR(200), address2 VARCHAR(200), city VARCHAR(200), country VARCHAR(200), createdAt TIMESTAMP, updatedAt TIMESTAMP );
+CREATE TABLE Bills ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(200), payment FLOAT, addressname VARCHAR(200), address1 VARCHAR(200), address2 VARCHAR(200), city VARCHAR(200), country VARCHAR(200), items VARCHAR(200), createdAt TIMESTAMP, updatedAt TIMESTAMP );
+
+Create table users( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(150), email VARCHAR(100), age INT, gender VARCHAR(20), passwd VARCHAR(100), createdAt TIMESTAMP, updatedAt TIMESTAMP );
 
 ------------------------------------
 
@@ -45,5 +47,6 @@ CREATE TABLE Bills ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(200), payme
     "address1": "Flower Rd.",
     "address2": "Mohodaradeniya",
     "city": "Colombo",
+    "items": "1-M, 5-S, 6-XL, 2-XXL, 7-M"
     "country": "Sri Lanka"
 }
