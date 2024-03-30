@@ -50,7 +50,13 @@ router.post('/login', async (request, response) => {
         }
 
         // Password is correct, user is authenticated
-        response.status(200).json({ message: 'Login successful' });
+        response.status(200).json({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            age: user.age,
+            gender: user.gender
+        });
     } catch (error) {
         console.error('Login error:', error);
         response.status(500).json({ message: 'Internal server error' });
