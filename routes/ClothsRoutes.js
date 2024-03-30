@@ -37,6 +37,30 @@ router.post('/cloths', async (request,response)=>{
 
 });
 
+router.get('/cloths/category/:categoryName', async (request, response) => {
+    const { categoryName } = request.params; // Get the category name from the URL parameters
+
+    try {
+        // Fetch all cloths from the database that match the specified category
+        const clothsInCategory = await ClothsModel.findAll({
+            where: {
+                category: categoryName
+            }
+        });
+
+        // If cloths are found, send them back in the response
+        if(clothsInCategory.length > 0) {
+            response.status(200).json(clothsInCategory);
+        } else {
+            // If no cloths are found, send a 404 response
+            response.status(404).send('No cloths found for the specified category.');
+        }
+    } catch (error) {
+        // Handle any errors that occur during the database query
+        response.status(500).json(error);
+    }
+});
+
 
 router.get('/cloths/search', async (request, response) => {
     const { query } = request.query;
